@@ -1,0 +1,124 @@
+<div class="tabular--wrapper">
+    <div class="row w-100 align-items-center">
+        <div class="col-2">
+            {{#if ngayNhanDon}}
+            <h3 class="main--title m-0">Đơn thư ngày {{ngayNhanDon}}</h3>
+            {{else}}
+            <h3 class="main--title m-0">Tất cả đơn thư</h3>
+            {{/if}}
+        </div>
+        <div class="col-8">
+            <form method="POST" action="/donthu/timkiem">
+                <div class="input-group">
+                    <input type="text" class="form-control  me-2" placeholder="Nhập tên người gửi" name="hoten">
+                    <select class="form-select me-2" name="trangthai">
+                        <option value="">Trạng thái</option>
+                        <option value="Đang xử lý">Đang xử lý</option>
+                        <option value="Đã xử lý">Đã xử lý</option>
+                    </select>
+                    <select class="form-select me-2" name="loaidonthu">
+                        <option value="">Loại đơn thư</option>
+                        <option value="Phản ánh">Phản ánh</option>
+                        <option value="Khiếu nại">Khiếu nại</option>
+                        <option value="Tố cáo">Tố cáo</option>
+                        <option value="Kiến nghị">Khiến nghị</option>
+                    </select>
+                    <button type="submit" class="btn btn-outline-primary">Tìm kiếm</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-2 d-flex justify-content-end">
+            <a href="/donthu/taodonthu" class="btn btn-primary">Thêm đơn thư</a>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ngày nhận đơn</th>
+                    <th>Người gửi</th>
+                    <th>Loại đơn thư</th>
+                    <th>Lĩnh vực</th>
+                    <th>Trạng thái</th>
+                    <th>Ngày phản hồi</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#if receptions.length}} 
+                    {{#each receptions as |reception|}} 
+                    <tr>
+                        <td>{{reception.ngaynhandon}}</td> 
+                        <td>{{reception.hoten}}</td>
+                        <td>{{reception.loaidonthu}}</td>
+                        <td>{{reception.linhvuc}}</td>
+                        <td>{{reception.trangthai}}</td>
+                        <td>{{reception.ngaynhanphanhoi}}</td>
+                        <td><a class="edit" href="/donthu/{{reception._id}}/edit"><i class="fas fa-edit"></i></a></td>
+                        <td>
+                            <a
+                                href="#"
+                                id="btn-delete"
+                                class="btn btn-link"
+                                data-bs-toggle="modal"
+                                data-bs-target="#delete-course-modal"
+                                data-id="{{reception._id}}">
+                                <i  
+                                    class="fa-solid fa-trash trash">
+                                </i>
+                            </a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                {{else}}
+                    <tr>
+                        <td colspan="7" class="text-center">Không có đơn thư. <a href="/donthu/taodonthu">Thêm đơn thư</a></td>
+                    </tr>
+                {{/if}}
+            </tbody>                    
+        </table>
+    </div>
+</div>
+
+{{!-- Form submit delete --}}
+<form method="POST" name="deleteForm"></form>
+
+{{!  Confirm delete modal }}
+<!-- Modal -->
+<div class="modal fade" id="delete-course-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có thực sự muốn xóa mục này không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button id="btn-delete-reception" type="button" class="btn btn-primary">Xóa vĩnh viễn</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var receptionId;
+        var btnDeleteReception = document.getElementById("btn-delete-reception");
+        var deleteForm = document.forms['deleteForm'];
+
+        // When dialog confirm clicked
+        $('#delete-course-modal').on('show.bs.modal', function(e) { 
+            var button = $(e.relatedTarget); 
+            receptionId = button.data('id');
+        });
+
+        btnDeleteReception.onclick = function() {
+            deleteForm.action = '/donthu/' + receptionId + '?_method=DELETE';
+            deleteForm.submit();
+        }
+    });
+</script>

@@ -1,0 +1,495 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    background: #E5E7EB;
+    position: relative;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Menu Sidebar*/
+#menu {
+    background: #111827;
+    width: 220px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left:0;
+}
+
+#menu .logo {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 30px 0 0 30px;
+}
+
+#menu .logo img {
+    width: 40px;
+}
+
+#menu .items {
+    margin-top: 40px;
+}
+
+#menu .items li {
+    list-style: none;
+    padding: 15px 0;
+    transition: 0.3s ease;
+}
+
+#menu .items li:hover {
+    background: #253047;
+    cursor: pointer;
+}
+
+#menu .items li:nth-child(1) {
+    border-left: 4px solid #fff;
+}
+
+#menu .items li i {
+    color: rgb(134, 141, 151);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 10px 0 25px;
+}
+
+#menu .items li:hover i,
+#menu .items li:hover a
+{
+    color: #F3F4F6;
+}
+
+#menu .items li a {
+    text-decoration: none;
+    color: rgb(134, 141, 151);
+    font-weight: 300;
+    transition: 0.3s ease;
+}
+
+/* Navbar */
+
+#interface {
+    width: calc(100% - 220px);
+    margin-left: 220px;
+    position: relative;
+    
+}
+
+#interface .navigation {
+    position: fixed;
+    width: calc(100% - 220px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 15px 30px;
+    border-bottom: 3px solid #597ef7;
+}
+
+#interface .navigation .search {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid #d7dbe6;
+    border-radius: 4px;
+}
+#interface .navigation .search i {
+    margin-right: 14px;
+}
+#interface .navigation .search input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+#interface .navigation .profile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#interface .navigation .profile i {
+    margin-right: 20px;
+    font-size: 19px;
+    font-weight: 400;
+}
+
+#interface .navigation .profile img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Icon menu */
+
+.n1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+#menu-btn {
+    display: none;
+    color: #2b2b2b;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+/* Dashboard */ 
+.i-name {
+    margin-top: 70px;
+    color: #444a53;
+    padding: 15px 30px 0 30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.values {
+    padding: 30px 30px 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.values .val-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #fff;
+    width: 235px;
+    padding: 16px 20px;
+    border-radius: 5px;
+}
+
+.values .val-box i {
+    font-size: 25px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.values .val-box:nth-child(1) i{
+    background: #7B74EC;   
+}
+
+.values .val-box:nth-child(2) i{
+    background: #5C8AF0;   
+}
+
+.values .val-box:nth-child(3) i{
+    background: #E45D99;   
+}
+
+.values .val-box:nth-child(4) i{
+    background: #74daec;   
+}
+
+.values .val-box h3 {
+    font-size: 18px;
+    font-weight: 600px;
+}
+
+.values .val-box span {
+    font-size: 15px;
+    color: #828997;
+}
+
+/* Board */
+
+.board {
+    
+    width: 94%;
+    margin: 30px 0 30px 30px;
+    overflow: auto;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.board img {
+    width:  45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.board h5 {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.board p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #787d8d;
+}
+
+.board .people {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 1px solid #eef0f3;
+}
+
+thead td {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 400;
+    background: #F9FAFB;
+    text-align: start;
+    padding: 15px;
+}
+
+tbody tr td {
+    padding: 10px 15px;
+}
+
+.active p {
+    background: #d7fada;
+    padding: 2px 10px;
+    display: inline-block;
+    border-radius: 40px;
+    color: #2b2b2b;
+}
+
+.edit a {
+    text-decoration: none;
+    color: #554cd1;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Table */
+.tabular--wrapper {
+    width: 94%;
+    margin: 30px 0 30px 30px;
+    overflow: auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+.main--title {
+    font-size: 16px;
+    padding: 8px;
+}
+
+.table-container {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: white;
+    color: #333333;
+}
+th {
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+}
+
+tbody {
+    background: #f2f2f2;
+}
+
+td {
+    padding: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background: #fff;
+}
+tfoot {
+    background: rgba(113,99,186,255);
+    font-weight: bold;
+    color: #fff;
+}
+
+tfoot td {
+    padding: 15px;
+}
+
+.table-container button {
+    border: none;
+    outline: none;
+    color: green;
+    background: none;
+    cursor: pointer;
+}
+
+
+/* Responsive */
+@media (max-width: 769px) {
+    #menu {
+        width: 200px;
+        position: fixed;
+        left: -200px;      
+        transition: 0.3s ease;  
+    }
+
+    #menu-btn {
+        display: initial;
+    }
+
+    #menu.active {
+        left: 0px; 
+    }
+
+    #interface {
+        width: 100%;
+        margin-left: 0px;
+        display: inline-block;
+        transition: 0.3s ease;  
+    }
+
+    #menu.active~#interface {
+        width: calc(100% - 220px);
+        margin-left: 200px;
+        transition: 0.3s ease;  
+    }
+
+    #interface .navigation {
+        width: 100%;
+    }
+    .values {
+        padding: 30px 30px 0 30px;
+        justify-content: flex-start;
+    }
+    .values .val-box{
+        padding: 16px 20px;
+        margin: 10px 20px 10px 0;
+    }
+    .board {
+        width: 92%;
+        padding: 0;
+        overflow-x: auto;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .row {
+        display: inline;
+    }
+    .col,.col-4,.col-3 {
+        width: 100%;
+    }
+}
+
+@media (max-width: 477px) {
+    #interface .navigation{
+        padding: 15px;
+    }
+    #interface .navigation .search input {
+        width: 150px;
+    }
+    .i-name {
+        padding: 30px 30px 0 15px;
+    }
+    .values {
+        padding: 15px 15px 0 15px;
+    }
+    .values .val-box{
+        width: 100%;
+        margin: 8px 0;
+    }
+    .board {
+        margin: 30px 15px 30px 15px;
+    }
+}
+
+.container.px-3 {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container.px-3 form {
+    
+}
+
+.container.px-3 form .form-group {
+    margin-bottom: 20px;
+}
+
+.container.px-3 form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select option {
+    background-color: #fff;
+    color: #555;
+  }
+
+
+.container.px-3 form input[type="text"],
+.container.px-3 form input[type="email"],
+.container.px-3 form textarea,
+option {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.container.px-3 form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.container.px-3 form button:hover {
+    background-color: #45a049;
+}

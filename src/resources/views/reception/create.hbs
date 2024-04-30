@@ -1,0 +1,89 @@
+<div class="container px-3">
+    <form method="POST" action="/donthu/store">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="name" class="form-label">Họ tên người gửi</label>
+                <input type="text" class="form-control" id="name" name="hoten" placeholder="Nhập tên người gửi" required>
+            </div>
+            <div class="col">
+                <label for="agency" class="form-label">Địa chỉ</label>
+                <input type="text" class="form-control" id="agency" name="diachi" placeholder="Nhập địa chỉ" required>
+            </div>
+            <div class="col">
+                <label for="sodienthoai" class="form-label">Số điện thoại</label>
+                <input type="text" class="form-control" id="sodienthoai" name="sodienthoai" placeholder="Nhập số điện thoại" required>
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col">
+                <label for="coquannhan" class="form-label">Cơ quan nhận</label>
+                <select class="form-select" id="coquannhan" name="coquannhan">
+                    <option value="Hội đồng nhân dân">Hội đồng nhân dân</option>
+                    <option value="Văn phòng chính phủ">Văn phòng chính phủ</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="loaidonthu" class="form-label">Loại đơn thư</label>
+                <select class="form-select" id="loaidonthu" name="loaidonthu">
+                    <option value="Phản ánh">Phản ánh</option>
+                    <option value="Khiếu nại">Khiếu nại</option>
+                    <option value="Tố cáo">Tố cáo</option>
+                    <option value="Kiến nghị">Khiến nghị</option>
+                    <option value="Khác">Khác...</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="linhvuc" class="form-label">Lĩnh vực</label>
+                <select class="form-select" id="linhvuc" name="linhvuc">
+                    <option value="Hành chính">Hành chính</option>
+                    <option value="Tư pháp">Tư pháp</option>
+                    <option value="Đất đai">Đất đai</option>
+                    <option value="Lĩnh vực khác">Khác...</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-4">
+                <label for="ngaynhandon" class="form-label">Ngày nhận đơn</label>
+                <input type="date" class="form-control" id="ngaynhandon" name="ngaynhandon" required>
+                
+            </div>
+            <div class="col-4">
+                <label for="vanbanngaychuyen" class="form-label">Văn bản / ngày chuyển</label>
+                <textarea class="form-control" id="vanbanngaychuyen" name="vanban_ngaychuyen" rows="2" placeholder="Enter your message"></textarea>
+            </div>
+            <div class="col-4">
+                <label for="coquanthamquyen" class="form-label">Cơ quan thẩm quyền</label>
+                <textarea class="form-control" id="coquanthamquyen" name="coquanthamquyen" rows="2" placeholder="Enter your message"></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-4">
+                <label for="ngaynhanphanhoi" class="form-label">Ngày nhận phản hồi</label>
+                <input type="date" class="form-control" id="ngaynhanphanhoi" name="ngaynhanphanhoi" required>
+            </div>
+            <div class="col">
+                <label for="status" class="form-label">Trạng thái</label>
+                <select class="form-select" id="status" name="trangthai">
+                    <option value="Đang xử lý">Đang xử lý</option>
+                    <option value="Đã xử lý">Đã xử lý</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <label for="ketqua" class="form-label">Kết quả</label>
+                <textarea class="form-control" id="ketqua" name="ketqua" rows="2" placeholder="Enter your message"></textarea>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="noidung" class="form-label">Nội dung:</label>
+            <textarea class="form-control" id="noidung" name="noidung" rows="4" placeholder="Nhập nội dung..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-light">Quay về</button>
+
+    </form>
+</div>

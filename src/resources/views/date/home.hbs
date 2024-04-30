@@ -1,0 +1,89 @@
+<div class="tabular--wrapper">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="main--title">Tất cả ngày tiếp dân</h3>
+        <a href="/ngaytiepdan/taongaytiepdan" class="btn btn-primary">Thêm ngày</a>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ngày tiếp</th>
+                    <th>Lãnh đạo tiếp</th>
+                    <th>Số vụ việc</th>
+                    <th>Ghi chú </th>
+                    <th colspan="3">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#if dates.length}}
+                    {{#each dates}}
+                    <tr>
+                        <td>{{this.date}}</td>
+                        <td>{{this.lanhdaotiep}}</td>
+                        <td>{{this.receptionCount}}</td>
+                        <td>{{this.ghichu}}</td>
+                        <td class="edit">
+                            <a href="/donthu/{{this.date}}/details"><i class="fa-solid fa-circle-info"></i></a>
+                        </td>
+                        <td class="edit">
+                            <a href="/ngaytiepdan/{{this.date}}/edit"><i class="fas fa-edit"></i></a>
+                        </td>
+                        <td class="edit">
+                            <a href="/ngaytiepdan/{{this.date}}/delete" data-bs-toggle="modal" data-bs-target="#delete-course-modal" data-id="{{this.date}}">
+                                <i class="fas fa-trash trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    {{/each}}
+                {{else}}
+                    <tr>
+                        <td colspan="5" class="text-center">Không có ngày tiếp dân. <a href="/ngaytiepdan/taongaytiepdan"> Thêm ngày tiếp dân</a></td>
+                    </tr>
+                {{/if}}
+            </tbody>                    
+        </table>
+    </div>
+</div>
+
+{{!-- Form submit delete --}}
+<form method="POST" name="deleteForm"></form>
+
+{{!  Confirm delete modal }}
+<!-- Modal -->
+<div class="modal fade" id="delete-course-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa ngày tiếp dân</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có thực sự muốn xóa ngày này không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button id="btn-delete-reception" type="button" class="btn btn-primary">Xóa vĩnh viễn</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var receptionId;
+        var btnDeleteReception = document.getElementById("btn-delete-reception");
+        var deleteForm = document.forms['deleteForm'];
+
+        // When dialog confirm clicked
+        $('#delete-course-modal').on('show.bs.modal', function(e) { 
+            var button = $(e.relatedTarget); 
+            receptionId = button.data('id');
+        });
+
+        btnDeleteReception.onclick = function() {
+            deleteForm.action = '/ngaytiepdan/' + receptionId + '?_method=DELETE';
+            deleteForm.submit();
+        }
+    });
+</script>

@@ -1,0 +1,87 @@
+<div class="container px-3">
+    <form method="POST" action="/donthu/{{reception._id}}?_method=PUT">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="name" class="form-label">Họ tên người gửi</label>
+                <input type="text" class="form-control" id="name" name="hoten" placeholder="Nhập tên người gửi" value="{{reception.hoten}}" required>
+            </div>
+            <div class="col">
+                <label for="agency" class="form-label">Địa chỉ</label>
+                <input type="text" class="form-control" id="agency" name="diachi" placeholder="Nhập địa chỉ" value="{{reception.diachi}}"  required>
+            </div>
+            <div class="col">
+                <label for="sodienthoai" class="form-label">Số điện thoại</label>
+                <input type="text" class="form-control" id="sodienthoai" name="sodienthoai" placeholder="Nhập số điện thoại" value="{{reception.sodienthoai}}" required>
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col">
+                <label for="coquannhan" class="form-label">Cơ quan nhận</label>
+                <select class="form-select" id="coquannhan" name="coquannhan">
+                    <option value="Hội đồng nhân dân" {{{ ifEquals reception.coquannhan "Hội đồng nhân dân" selected }}}>Hội đồng nhân dân</option>
+                    <option value="Văn phòng chính phủ" {{{ ifEquals reception.coquannhan "Văn phòng chính phủ" selected }}}>Văn phòng chính phủ</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="loaidonthu" class="form-label">Loại đơn thư</label>
+                <select class="form-select" id="loaidonthu" name="loaidonthu">
+                    <option value="Phản ánh" {{{ ifEquals reception.loaidonthu "Phản ánh" selected }}}>Phản ánh</option>
+                    <option value="Khiếu nại" {{{ ifEquals reception.loaidonthu "Khiếu nại" selected }}}>Khiếu nại</option>
+                    <option value="Tố cáo" {{{ ifEquals reception.loaidonthu "Tố cáo" selected }}}>Tố cáo</option>
+                    <option value="Kiến nghị" {{{ ifEquals reception.loaidonthu "Kiến nghị" selected }}}>Khiến nghị</option>
+                    <option value="Khác" {{{ ifEquals reception.loaidonthu "Khác" selected }}}>Khác...</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="linhvuc" class="form-label">Lĩnh vực</label>
+                <select class="form-select" id="linhvuc" name="linhvuc">
+                    <option value="Hành chính" {{{ ifEquals reception.linhvuc "Hành chính" selected }}}>Hành chính</option>
+                    <option value="Tư pháp" {{{ ifEquals reception.linhvuc "Tư pháp" selected }}}>Tư pháp</option>
+                    <option value="Đất đai" {{{ ifEquals reception.linhvuc "Đất đai" selected }}}>Đất đai</option>
+                    <option value="Lĩnh vực khác" {{{ ifEquals reception.linhvuc "Lĩnh vực khác" selected }}}>Khác...</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-4">
+                <label for="ngaynhandon" class="form-label">Ngày nhận đơn</label>
+                <input type="date" class="form-control" id="ngaynhandon" name="ngaynhandon" value="{{reception.ngaynhandon}}"  required>
+                
+            </div>
+            <div class="col-4">
+                <label for="vanbanngaychuyen" class="form-label">Văn bản / ngày chuyển</label>
+                <textarea class="form-control" id="vanbanngaychuyen" name="vanban_ngaychuyen" rows="3" placeholder="Enter your message">{{reception.vanban_ngaychuyen}}</textarea>
+            </div>
+            <div class="col-4">
+                <label for="coquanthamquyen" class="form-label">Cơ quan thẩm quyền</label>
+                <textarea class="form-control" id="coquanthamquyen" name="coquanthamquyen" rows="3" placeholder="Enter your message">{{reception.coquanthamquyen}}</textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-4">
+                <label for="ngaynhanphanhoi" class="form-label">Ngày nhận phản hồi</label>
+                <input type="date" class="form-control" id="ngaynhanphanhoi" name="ngaynhanphanhoi" value="{{reception.ngaynhanphanhoi}}" required>
+            </div>
+            <div class="col">
+                <label for="status" class="form-label">Trạng thái</label>
+                <select class="form-select" id="status" name="trangthai">
+                    <option value="Đang xử lý" {{{ ifEquals reception.trangthai "Đang xử lý" selected }}}>Đang xử lý</option>
+                    <option value="Đã xử lý" {{{ ifEquals reception.trangthai "Đã xử lý" selected }}}>Đã xử lý</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <label for="ketqua" class="form-label">Kết quả</label>
+                <textarea class="form-control" id="ketqua" name="ketqua" rows="3" placeholder="Enter your message">{{reception.ketqua}}</textarea>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="noidung" class="form-label">Nội dung:</label>
+            <textarea class="form-control" id="noidung" name="noidung" rows="4" placeholder="Nhập nội dung...">{{reception.noidung}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu lại</button>
+    </form>
+</div>

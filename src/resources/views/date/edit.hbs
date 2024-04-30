@@ -1,0 +1,23 @@
+<div class="container px-3">
+    <form method="POST" action="/ngaytiepdan/{{reception.date}}?_method=PUT">
+        <div class="col">
+            <label for="sodienthoai" class="form-label">Ngày tiếp dân</label>
+            <input type="date" class="form-control" id="sodienthoai" name="date" value="{{reception.date}}" required>
+        <div class="col mt-3">
+            <label for="lanhdaotiep" class="form-label">Lãnh đạo tiếp</label>
+            <input type="text" class="form-control" id="lanhdaotiep" name="lanhdaotiep" placeholder="Nhập tên lãnh đạo" value="{{reception.lanhdaotiep}}">
+        </div>        
+        <div class="col mt-3">
+            <label for="chuyenvienphucvu" class="form-label">Số điện thoại</label>
+            <input type="text" class="form-control" id="chuyenvienphucvu" name="chuyenvienphucvu" placeholder="Nhập tên hoặc chức vụ" value="{{reception.chuyenvienphucvu}}">
+        <div class="col mt-3">
+            <label for="ghichu" class="form-label">Ghi chú</label>
+            <input type="text" class="form-control" id="ghichu" name="ghichu" placeholder="Nhập ghi chú" value="{{reception.ghichu}}">
+        </div>        
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary mt-4">Lưu lại</button>
+            <button type="submit" class="btn btn-primary mt-4">Back</button>
+        </div>
+    </form>
+</div>

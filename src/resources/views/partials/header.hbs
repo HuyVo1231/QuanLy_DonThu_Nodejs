@@ -1,0 +1,18 @@
+<section id="menu">
+    <div class="logo">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" alt="Logo">
+        <h3>Dynamic</h3>
+    </div>
+    <div class="items">
+        <li><i class="fa-solid fa-chart-pie"></i><a href="/">Trang chủ</a></li>
+                <li><i class="fa-solid fa-edit"></i><a href="/ngaytiepdan">Ngày tiếp dân</a></li>
+        <li><i class="fa-solid fa-cc-visa"></i><a href="/donthu/">Tất cả đơn thư</a></li>
+        {{#if user}}
+            <li><i class="fa-solid fa-cc-visa"></i><a href="/user/profile">Thông tin của bạn</a></li>
+            <li><i class="fa-solid fa-th-large"></i><a href="/login/logout">Đăng xuất</a></li>
+        {{else}}
+            <li><a href="/login/dangnhap"><i class="fa-solid fa-uikit"></i>Đăng nhập</a></li>
+            <li><i class="fa-solid fa-th-large"></i><a href="/login/dangky">Đăng ký</a></li>
+        {{/if}}
+    </div>
+</section>

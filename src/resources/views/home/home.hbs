@@ -1,0 +1,122 @@
+<div class="values">
+    <div class="val-box">
+        <i class="fas fa-users"></i>
+        <div>
+            <h3 style="text-align: center;">{{userCount}}</h3>
+            <span>Người dùng</span>
+        </div>
+    </div>
+    <div class="val-box">
+        <i class="fa-regular fa-calendar-check"></i>
+        <div>
+            <h3 style="text-align: center;">{{dateCount}}</h3>
+            <span>Số ngày tiếp</span>
+        </div>
+    </div>
+    <div class="val-box">
+        <i class="fas fa-users"></i>
+        <div>
+            <h3 style="text-align: center;">{{receptionCount}}</h3>
+            <span>Số vụ việc</span>
+        </div>
+    </div>
+    <div class="val-box">
+        <i class="fas fa-users"></i>
+        <div>
+            <h3 style="text-align: center;">{{resolvedCount}}</h3>
+            <span>Đã giải quyết</span>
+        </div>
+    </div>
+</div>
+<div class="board">
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Title</td>
+                <td>Status</td>
+                <td>Role</td>
+                {{#if userAdmin}}
+                <td colspan="2">Manage</td>
+                {{/if}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td class="people">
+                    <img src="{{this.avatar}}" alt="">
+                    <div class="people-de">
+                        <h5>{{this.name }}</h5>
+                        <p>{{this.email}}</p>
+                    </div>
+                </td>
+                <td class="people-des">
+                    <h5>{{this.title}}</h5>
+                    <p>Web dev</p>
+                </td>
+                <td class="active">
+                    <p>Active</p>
+                </td>
+                <td class="role">
+                    <p>{{this.role}}</p>
+                </td>
+                {{#if userAdmin}}
+                <td class="edit"><a href="/user/{{this._id}}">Edit</a></td>
+                <td class="edit">
+                    <a href="#" id="btn-delete" class="btn btn-link" data-bs-toggle="modal"
+                        data-bs-target="#delete-course-modal" data-id="{{this._id}}">
+                        Delete
+                    </a>
+                </td>
+                {{/if}}
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+
+
+{{!-- Form submit delete --}}
+<form method="POST" name="deleteForm"></form>
+
+{{!  Confirm delete modal }}
+<!-- Modal -->
+<div class="modal fade" id="delete-course-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có thực sự muốn xóa người này không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button id="btn-delete-reception" type="button" class="btn btn-primary">Xóa vĩnh viễn</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var userID;
+        var btnDeleteReception = document.getElementById("btn-delete-reception");
+        var deleteForm = document.forms['deleteForm'];
+
+        // When dialog confirm clicked
+        $('#delete-course-modal').on('show.bs.modal', function(e) { 
+            var button = $(e.relatedTarget); 
+            userID = button.data('id');
+        });
+
+        btnDeleteReception.onclick = function() {
+            deleteForm.action = '/user/' + userID + '?_method=DELETE';
+            deleteForm.submit();
+        }
+    });
+</script>
