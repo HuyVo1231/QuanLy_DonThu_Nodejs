@@ -47,6 +47,7 @@ class UsersController {
             user.role = req.body.role || user.role;
             user.title = req.body.title || user.title;
             user.avatar = req.body.avatar || user.avatar;
+            user.isActive = req.body.isActive || user.isActive;
 
             await user.save();
 

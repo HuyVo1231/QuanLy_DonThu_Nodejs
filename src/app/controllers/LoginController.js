@@ -19,13 +19,18 @@ class LoginController {
                 });
                 return res.redirect("/login/dangnhap");
             }
+
+            // Kiểm tra nếu tài khoản chưa được kích hoạt hoặc không phải là admin
+            if (!user.isActive && !user.isAdmin) {
+                notifier.notify({
+                    title: "Đăng nhập thất bại",
+                    message: "Tài khoản chưa được kích hoạt!",
+                    timeout: 2,
+                });
+                return res.redirect("/login/dangnhap");
+            }
             req.session.user = user;
             req.session.avatar = user.avatar;
-            const accessToken = jwt.sign(
-                { username: user.name, role: user.password },
-                "jsonwebtoken_dayne"
-            );
-            res.cookie("accessToken", accessToken, { httpOnly: true });
             notifier.notify({
                 title: "Đăng nhập thành công",
                 message: "Chào mừng bạn đã đăng nhập!",
@@ -44,9 +49,9 @@ class LoginController {
     }
 
     async register(req, res, next) {
-        const { name, password, repassword } = req.body;
+        const { name, password, repassword, role, title, email } = req.body;
         try {
-            if (!name || !password || !repassword) {
+            if (!name || !password || !repassword || !role || !title || !email) {
                 notifier.notify({
                     title: "Điền đầy đủ các trường",
                     message: "Vui lòng nhập đầy đủ thông tin!",
@@ -73,9 +78,11 @@ class LoginController {
                 });
                 return res.redirect("/login/dangky");
             }
+            const isAdmin = false;
+            const isActive = false;
             const avatarDefault =
                 "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg";
-            const newUser = new User({ name, password, avatar: avatarDefault });
+            const newUser = new User({ name, password, avatar: avatarDefault, title, role, email, isAdmin, isActive });
             await newUser.save();
 
             notifier.notify({

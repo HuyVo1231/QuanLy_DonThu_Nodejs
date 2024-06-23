@@ -1,5 +1,5 @@
 <div class="container px-3">
-    <form method="POST" action="/donthu/store">
+    <form method="POST" action="/donthu/store" enctype="multipart/form-data">
         <div class="row mb-3">
             <div class="col">
                 <label for="name" class="form-label">Họ tên người gửi</label>
@@ -51,8 +51,11 @@
                 
             </div>
             <div class="col-4">
-                <label for="vanbanngaychuyen" class="form-label">Văn bản / ngày chuyển</label>
-                <textarea class="form-control" id="vanbanngaychuyen" name="vanban_ngaychuyen" rows="2" placeholder="Enter your message"></textarea>
+                <div class="form-group">
+                    <label for="vanbanngaychuyen" class="form-label">Văn bản / ngày chuyển</label>
+                    <textarea class="form-control" id="vanbanngaychuyen" name="vanban_ngaychuyen" rows="2" placeholder="Enter your message"></textarea>
+                        <input type="file" name="vanban_ngaychuyen_file" class="form-control">
+                </div>
             </div>
             <div class="col-4">
                 <label for="coquanthamquyen" class="form-label">Cơ quan thẩm quyền</label>
@@ -64,6 +67,7 @@
             <div class="col-4">
                 <label for="ngaynhanphanhoi" class="form-label">Ngày nhận phản hồi</label>
                 <input type="date" class="form-control" id="ngaynhanphanhoi" name="ngaynhanphanhoi" required>
+                <input type="file" name="ngaynhan_phanhoi_file" class="form-control">
             </div>
             <div class="col">
                 <label for="status" class="form-label">Trạng thái</label>

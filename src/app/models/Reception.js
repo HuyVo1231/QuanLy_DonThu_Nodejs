@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Log = require("./Log");
 
 const receptionSchema = new mongoose.Schema({
     hoten: {
@@ -34,6 +35,14 @@ const receptionSchema = new mongoose.Schema({
     vanban_ngaychuyen: {
         type: String,
         trim: true,
+    },
+    vanban_ngaychuyen_file: { 
+        type:String,
+        trim:true,
+    },
+    ngaynhan_phanhoi_file: { 
+        type:String,
+        trim:true,
     },
     coquanthamquyen: {
         type: String,

@@ -1,0 +1,61 @@
+<div class="tabular--wrapper">
+    <div class="row w-100 align-items-center">
+        <div class="col-2">
+            <h3 class="main--title m-0">Bảng log đơn thư</h3>
+        </div>
+        <div class="col-8">
+            <form method="POST" action="/donthu/timkiem">
+                <div class="input-group">
+                    <input type="text" class="form-control  me-2" placeholder="Nhập tên người gửi" name="hoten">
+                    <select class="form-select me-2" name="trangthai">
+                        <option value="">Trạng thái</option>
+                        <option value="Đang xử lý">Đang xử lý</option>
+                        <option value="Đã xử lý">Đã xử lý</option>
+                    </select>
+                    <select class="form-select me-2" name="loaidonthu">
+                        <option value="">Loại đơn thư</option>
+                        <option value="Phản ánh">Phản ánh</option>
+                        <option value="Khiếu nại">Khiếu nại</option>
+                        <option value="Tố cáo">Tố cáo</option>
+                        <option value="Kiến nghị">Khiến nghị</option>
+                    </select>
+                    <button type="submit" class="btn btn-outline-primary">Tìm kiếm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Thời gian</th>
+                    <th>Người thực hiện</th>
+                    <th>Hành động</th>
+                    <th>Dữ liệu</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#if logs.length}} 
+                    {{#each logs}}
+                        <tr>
+                            <td>{{this.timestamp}}</td>
+                            <td>{{this.name}}</td>
+                            <td>{{this.action}}</td>
+                            <td>
+                                <ul>
+                                    <li>{{this.data.hoten}}</li>
+                                    <li>{{this.data.noidung}}</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {{/each}}
+                {{else}}
+                    <tr>
+                        <td colspan="4">Không có dữ liệu</td>
+                    </tr>
+                {{/if}}
+            </tbody>                    
+        </table>
+    </div>
+</div>

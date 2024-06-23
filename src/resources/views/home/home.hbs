@@ -28,8 +28,15 @@
         </div>
     </div>
 </div>
+
 <div class="board">
     <table width="100%">
+    <a 
+        href="/donthu/showlog" 
+        class="btn btn-primary float-start" 
+        style="margin-left: 30px; margin-top: 15px;">
+        Xem log
+    </a>
         <thead>
             <tr>
                 <td>Name</td>
@@ -56,7 +63,11 @@
                     <p>Web dev</p>
                 </td>
                 <td class="active">
-                    <p>Active</p>
+                    {{#if this.isActive}}
+                        <p>Active</p>
+                    {{else}}
+                        <p class="bg-danger text-white d-inline-block">Inactive</p>
+                    {{/if}}
                 </td>
                 <td class="role">
                     <p>{{this.role}}</p>
@@ -75,7 +86,6 @@
         </tbody>
     </table>
 </div>
-
 
 
 {{!-- Form submit delete --}}

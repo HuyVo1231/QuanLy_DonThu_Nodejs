@@ -1,7 +1,7 @@
 <div class="tabular--wrapper">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3 class="main--title">Tất cả ngày tiếp dân</h3>
-        <a href="/ngaytiepdan/taongaytiepdan" class="btn btn-primary">Thêm ngày</a>
+        <a href="/ngaytiepdan/taongaytiepdan" class="btn btn-primary">Tạo lịch tiếp dân</a>
     </div>
     <div class="table-container">
         <table>
@@ -9,6 +9,7 @@
                 <tr>
                     <th>Ngày tiếp</th>
                     <th>Lãnh đạo tiếp</th>
+                    <th>Chuyên viên phục vụ</th>
                     <th>Số vụ việc</th>
                     <th>Ghi chú </th>
                     <th colspan="3">Hành động</th>
@@ -20,6 +21,7 @@
                     <tr>
                         <td>{{this.date}}</td>
                         <td>{{this.lanhdaotiep}}</td>
+                        <td>{{this.chuyenvienphucvu}}</td>
                         <td>{{this.receptionCount}}</td>
                         <td>{{this.ghichu}}</td>
                         <td class="edit">
